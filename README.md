@@ -1,16 +1,7 @@
 # bodega
 
-A new Flutter project.
+Aplicación que permite scanear códigos de barras de productos que previamente se registraron, con el fin de sumar los precios que son scaneados.
 
-## Getting Started
+## TECNOLOGIA
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Este proyecto utiliza FLUTTER como framework, ya que agiliza el desarrollo de aplicaciones para teléfonos móviles asi como entornos de escritorio.
