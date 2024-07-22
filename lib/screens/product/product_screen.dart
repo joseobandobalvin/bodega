@@ -4,11 +4,12 @@ import 'package:bodega/models/product.dart';
 import 'package:bodega/providers/database_provider.dart';
 import 'package:bodega/screens/home/menu_drawer.dart';
 
-import 'package:bodega/widgets/card_stack.dart';
+import 'package:bodega/screens/home/widgets/card_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:bodega/configs/themes/app_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -18,8 +19,10 @@ class ProductScreen extends StatefulWidget {
   State<ProductScreen> createState() => _ProductScreenState();
 }
 
-class _ProductScreenState extends State<ProductScreen> {
+class _ProductScreenState extends State<ProductScreen>
+    with SingleTickerProviderStateMixin {
   Future<List<Product>>? products;
+  late final SlidableController slidableController = SlidableController(this);
   late AudioPlayer player = AudioPlayer();
 
   @override

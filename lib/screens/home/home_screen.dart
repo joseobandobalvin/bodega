@@ -1,12 +1,13 @@
 import 'package:bodega/models/product.dart';
 import 'package:bodega/providers/database_provider.dart';
 import 'package:bodega/screens/home/menu_drawer.dart';
-import 'package:bodega/widgets/card_stack.dart';
+import 'package:bodega/screens/home/widgets/card_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:bodega/configs/themes/app_colors.dart';
 
 import 'package:bodega/generated/l10n.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:get/get.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -40,8 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
     player.setReleaseMode(ReleaseMode.stop);
 
     // Listar productos de la BD
-    products = DatabaseProvider.db.getProducts();
-    // products = DatabaseProvider.db.getDataExample();
+    //products = DatabaseProvider.db.getProducts();
+    products = DatabaseProvider.db.getDataExample();
   }
 
   @override
@@ -55,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kLightBlue,
+      //backgroundColor: kLightBlue,
       floatingActionButton: FloatingActionButton(
         onPressed: _scanBarcodeStream,
         child: const Icon(Icons.qr_code_scanner),
@@ -104,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
               if (snapshot.connectionState == ConnectionState.done &&
                   snapshot.data != null) {
                 childCount = snapshot.data!.length;
+
                 return SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {

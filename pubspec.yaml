@@ -1,11 +1,11 @@
 name: bodega
 description: "Aplicacion que permite ver precios de productos al scanear el
   codigo de barras."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: ">=3.4.0 <4.0.0"
 
 dependencies:
   audioplayers: ^6.0.0
@@ -16,7 +16,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_native_splash: ^2.4.0
-  flutter_slidable: ^3.1.0
+  flutter_slidable: ^3.1.1
   flutter_zoom_drawer: ^3.2.0
   get: ^4.6.6
   google_fonts: ^6.2.1
@@ -25,6 +25,7 @@ dependencies:
   path: ^1.9.0
   path_provider: ^2.1.3
   permission_handler: ^11.3.1
+  
   shared_preferences: ^2.2.3
   shimmer: ^3.0.0
   sqflite: ^2.3.3+1
@@ -104,4 +105,3 @@ flutter_launcher_icons:
     # macos:
     # generate: true
     # image_path: "path/to/image.png"
-

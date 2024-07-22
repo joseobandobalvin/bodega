@@ -1,3 +1,4 @@
+import 'package:bodega/configs/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:bodega/models/product.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -8,12 +9,14 @@ import 'package:get/get.dart';
 
 class CardStack extends StatelessWidget {
   final Product product;
+
   const CardStack(this.product, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Slidable(
       key: ValueKey(product.id),
+
       startActionPane: ActionPane(
         // A motion is a widget used to control how the pane animates.
         motion: const DrawerMotion(),
@@ -64,18 +67,70 @@ class CardStack extends StatelessWidget {
         ],
       ),
       child: ListTile(
+        minLeadingWidth: 3,
+        leading: Container(
+          width: 4.0,
+          color: Colors.green,
+        ),
         title: Text(
+          overflow: TextOverflow.ellipsis,
+          maxLines: 2,
           product.name,
           style: const TextStyle(
-            color: Colors.white,
+            color: kDarkBlue,
             fontSize: 12.0,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        trailing: Text(
-          product.price.toString(),
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 17.0,
+        subtitle: SizedBox(
+          width: double.maxFinite,
+          //color: Colors.green,
+          child: Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: RichText(
+                  text: const TextSpan(
+                    text: "20",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: ' und',
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ],
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const Expanded(
+                flex: 1,
+                child: Text(
+                  "la mejor descripcion de la app que esta pueda tener",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
+        trailing: Container(
+          width: 50,
+          //color: Colors.red,
+          child: Text(
+            textAlign: TextAlign.end,
+            product.price.toString(),
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 17.0,
+            ),
           ),
         ),
         onTap: () {
