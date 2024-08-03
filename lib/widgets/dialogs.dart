@@ -73,8 +73,14 @@ abstract class Dialogs {
       builder: (_) => AlertDialog(
         title: title != null ? Text(title) : Text(S.current.txtDefaultTitle),
         content: description != null
-            ? Text(description)
-            : Text(S.current.txtDefaultDescription),
+            ? Text(
+                description,
+                textAlign: TextAlign.justify,
+              )
+            : Text(
+                S.current.txtDefaultDescription,
+                textAlign: TextAlign.justify,
+              ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -188,6 +194,21 @@ abstract class ProgressDialog {
         ),
       ),
     );
+  }
+}
+
+class SnackBars {
+  static void show(BuildContext context, {required Object error}) {
+    final snackBar = SnackBar(
+      content: Text(error.toString()),
+      action: SnackBarAction(
+        label: 'Deshacer',
+        onPressed: () {
+          // Some code to undo the change.
+        },
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
 

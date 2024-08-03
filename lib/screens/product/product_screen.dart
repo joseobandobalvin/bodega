@@ -19,10 +19,9 @@ class ProductScreen extends StatefulWidget {
   State<ProductScreen> createState() => _ProductScreenState();
 }
 
-class _ProductScreenState extends State<ProductScreen>
-    with SingleTickerProviderStateMixin {
+class _ProductScreenState extends State<ProductScreen> {
   Future<List<Product>>? products;
-  late final SlidableController slidableController = SlidableController(this);
+
   late AudioPlayer player = AudioPlayer();
 
   @override
@@ -35,7 +34,8 @@ class _ProductScreenState extends State<ProductScreen>
     // Set the release mode to keep the source after playback has completed.
     player.setReleaseMode(ReleaseMode.stop);
     // Listar productos de la BD
-    products = DatabaseProvider.db.getProducts();
+    //products = DatabaseProvider.db.getProducts();
+    products = DatabaseProvider.db.getDataExample();
   }
 
   @override
@@ -49,7 +49,7 @@ class _ProductScreenState extends State<ProductScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kLightBlue,
+      //backgroundColor: kLightBlue,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Get.toNamed("/new-product");
@@ -107,33 +107,35 @@ class _ProductScreenState extends State<ProductScreen>
             //expandedHeight: 60.0,
             elevation: 10.0,
           ),
-          FutureBuilder(
-            future: products,
-            builder: (context, snapshot) {
-              var childCount = 0;
-              if (snapshot.connectionState == ConnectionState.done &&
-                  snapshot.data != null) {
-                childCount = snapshot.data!.length;
-                return SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return CardStack(snapshot.data![index]);
-                    },
-                    childCount: childCount,
+          SlidableAutoCloseBehavior(
+            child: FutureBuilder(
+              future: products,
+              builder: (context, snapshot) {
+                var childCount = 0;
+                if (snapshot.connectionState == ConnectionState.done &&
+                    snapshot.data != null) {
+                  childCount = snapshot.data!.length;
+                  return SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        return CardStack(snapshot.data![index]);
+                      },
+                      childCount: childCount,
+                    ),
+                  );
+                }
+
+                return const SliverToBoxAdapter(
+                  child: Center(
+                    child: LinearProgressIndicator(
+                      backgroundColor: Colors.white,
+                      color: Colors.black45,
+                      minHeight: 2,
+                    ),
                   ),
                 );
-              }
-
-              return const SliverToBoxAdapter(
-                child: Center(
-                  child: LinearProgressIndicator(
-                    backgroundColor: Colors.white,
-                    color: Colors.black45,
-                    minHeight: 2,
-                  ),
-                ),
-              );
-            },
+              },
+            ),
           ),
         ],
       ),

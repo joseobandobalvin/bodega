@@ -197,7 +197,7 @@ class NewProductForm extends GetView<ProductController> {
 
     try {
       res = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancelar', true, ScanMode.BARCODE);
+          '#ff6666', S.current.txtCancel, true, ScanMode.BARCODE);
       // controller.ini.value = res;
       // controller.barcode = res;
       if (controller.isNewProduct) {

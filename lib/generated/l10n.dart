@@ -180,16 +180,6 @@ class S {
     );
   }
 
-  /// `Cancell`
-  String get txtCancela {
-    return Intl.message(
-      'Cancell',
-      name: 'txtCancela',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Cancel`
   String get txtCancel {
     return Intl.message(
@@ -205,6 +195,16 @@ class S {
     return Intl.message(
       'Delete',
       name: 'txtDelete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get txtDelete2 {
+    return Intl.message(
+      'Delete',
+      name: 'txtDelete2',
       desc: '',
       args: [],
     );

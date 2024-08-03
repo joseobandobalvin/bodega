@@ -27,6 +27,7 @@ class ProductController extends GetxController {
           break;
         case const (Product):
           Product p = argumentData as Product;
+
           id = p.id!;
           barcode = p.barcode;
           name = p.name;

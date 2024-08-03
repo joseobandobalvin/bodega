@@ -1,6 +1,7 @@
 import 'package:bodega/configs/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rive/rive.dart';
 
 class MenuDrawer extends StatefulWidget {
   const MenuDrawer({super.key});
@@ -22,7 +23,14 @@ class _MenuDrawerState extends State<MenuDrawer> {
             decoration: BoxDecoration(
               color: kDarkBlue,
             ),
-            child: Text('-----'),
+            child: SizedBox(
+              height: double.maxFinite,
+              child: RiveAnimation.asset(
+                'assets/rive/black-cat-nobg.riv',
+                stateMachines: ["State Machine 1"],
+                fit: BoxFit.contain,
+              ),
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.home),

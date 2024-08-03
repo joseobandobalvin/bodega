@@ -191,7 +191,7 @@ class DatabaseProvider {
         id: 4,
         name: "PAPEL HIGIENICO ROSITA 2 ROLLOS",
         description: "descRIPCION 4",
-        price: 8.8,
+        price: 80.83,
         quantity: 2,
         barcode: "12377733",
         creationDate: DateTime.now(),
@@ -207,7 +207,7 @@ class DatabaseProvider {
       ),
       Product(
         id: 8,
-        name: "AMIA MILEY",
+        name: "MERMELADA MANZANA",
         description: "descRIPCION 8",
         price: 22,
         quantity: 2,

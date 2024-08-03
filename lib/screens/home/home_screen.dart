@@ -98,34 +98,36 @@ class _HomeScreenState extends State<HomeScreen> {
             //expandedHeight: 60.0,
             elevation: 10.0,
           ),
-          FutureBuilder(
-            future: products,
-            builder: (context, snapshot) {
-              var childCount = 0;
-              if (snapshot.connectionState == ConnectionState.done &&
-                  snapshot.data != null) {
-                childCount = snapshot.data!.length;
+          SlidableAutoCloseBehavior(
+            child: FutureBuilder(
+              future: products,
+              builder: (context, snapshot) {
+                var childCount = 0;
+                if (snapshot.connectionState == ConnectionState.done &&
+                    snapshot.data != null) {
+                  childCount = snapshot.data!.length;
 
-                return SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return CardStack(snapshot.data![index]);
-                    },
-                    childCount: childCount,
+                  return SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        return CardStack(snapshot.data![index]);
+                      },
+                      childCount: childCount,
+                    ),
+                  );
+                }
+
+                return const SliverToBoxAdapter(
+                  child: Center(
+                    child: LinearProgressIndicator(
+                      backgroundColor: Colors.white,
+                      color: Colors.black45,
+                      minHeight: 2,
+                    ),
                   ),
                 );
-              }
-
-              return const SliverToBoxAdapter(
-                child: Center(
-                  child: LinearProgressIndicator(
-                    backgroundColor: Colors.white,
-                    color: Colors.black45,
-                    minHeight: 2,
-                  ),
-                ),
-              );
-            },
+              },
+            ),
           ),
         ],
       ),

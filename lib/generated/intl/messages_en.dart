@@ -51,7 +51,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "txtBasicInformation":
             MessageLookupByLibrary.simpleMessage("Basic Informatión"),
         "txtCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-        "txtCancela": MessageLookupByLibrary.simpleMessage("Cancell"),
         "txtDatabaseBackUp":
             MessageLookupByLibrary.simpleMessage("Backup Copy"),
         "txtDatabaseDelete":
@@ -65,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "txtDefaultTitle":
             MessageLookupByLibrary.simpleMessage("Default Title"),
         "txtDelete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "txtDelete2": MessageLookupByLibrary.simpleMessage("Delete"),
         "txtDetail": MessageLookupByLibrary.simpleMessage("Detail"),
         "txtEdit": MessageLookupByLibrary.simpleMessage("Edit"),
         "txtFilterBy": MessageLookupByLibrary.simpleMessage("Filter by :"),

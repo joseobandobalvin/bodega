@@ -17,7 +17,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kLightBlue,
+      //backgroundColor: kLightBlue,
       drawer: const MenuDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[

@@ -12,9 +12,10 @@
     "txtDefaulProductName":"Producto genérico",
     "txtDefaultTitle":"Titulo por defecto",
     "txtDefaultDescription":"Descripcion por defecto",
-    "txtCancela": "Cancela",
+    
     "txtCancel": "Cancelar",
     "txtDelete": "Eliminar",
+    "txtDelete2": "Borrar",
     "txtDetail": "Detalle",
     "txtEdit": "Editar",
     "txtNew": "Nuevo",
