@@ -250,6 +250,16 @@ class S {
     );
   }
 
+  /// `Save`
+  String get txtSave {
+    return Intl.message(
+      'Save',
+      name: 'txtSave',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Products`
   String get txtProducts {
     return Intl.message(
@@ -260,11 +270,41 @@ class S {
     );
   }
 
-  /// `Save`
-  String get txtSave {
+  /// `Description`
+  String get txDescription {
     return Intl.message(
-      'Save',
-      name: 'txtSave',
+      'Description',
+      name: 'txDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get txName {
+    return Intl.message(
+      'Name',
+      name: 'txName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get txPrice {
+    return Intl.message(
+      'Price',
+      name: 'txPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get txQuantity {
+    return Intl.message(
+      'Quantity',
+      name: 'txQuantity',
       desc: '',
       args: [],
     );

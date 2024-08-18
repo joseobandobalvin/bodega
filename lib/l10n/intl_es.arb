@@ -20,11 +20,19 @@
     "txtEdit": "Editar",
     "txtNew": "Nuevo",
     "txtOk" : "OK",
-    "txtProducts": "Productos",
     "txtSave": "Guardar",
+
+    "txtProducts": "Productos",
+    "txDescription":"Descripción",
+    "txName":"Nombre",
+    "txPrice":"Precio",
+    "txQuantity":"Cantidad",
+    
+
     "txtSettings": "Configuración",
     "txtSignIn": "Ingresar",
     "txtFilterBy": "Filtrar por :",
+
     "txtDatabaseDelete": "Eliminar base de datos",
     "txtDatabaseRestore": "Restaurar copia de seguridad",
     "txtDatabaseBackUp": "Copia de seguridad",

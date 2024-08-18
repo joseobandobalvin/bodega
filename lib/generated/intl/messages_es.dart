@@ -42,6 +42,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "pageHomeWelcomeGender": m1,
         "pageHomeWelcomeRole": m2,
         "pageNotificationsCount": m3,
+        "txDescription": MessageLookupByLibrary.simpleMessage("Descripción"),
+        "txName": MessageLookupByLibrary.simpleMessage("Nombre"),
+        "txPrice": MessageLookupByLibrary.simpleMessage("Precio"),
+        "txQuantity": MessageLookupByLibrary.simpleMessage("Cantidad"),
         "txtAcademicFormation":
             MessageLookupByLibrary.simpleMessage("Formación académica"),
         "txtAditionalInformation":

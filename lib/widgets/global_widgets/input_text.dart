@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class InputText extends StatefulWidget {
   final Widget? prefixIcon;
-  final String? Function(String)? validator;
+  final String? Function(String?)? validator;
   final bool obscureText;
   final bool autofocus;
   final void Function(String)? onChanged;
@@ -34,7 +34,7 @@ class InputText extends StatefulWidget {
 }
 
 class InputTextState extends State<InputText> {
-  String? _errorText = "";
+  String? _errorText = "---";
   late bool _obscureText;
 
   CustomFormState? _formState;
@@ -58,9 +58,12 @@ class InputTextState extends State<InputText> {
   }
 
   void _validate(String text) {
+    //String t = text;
+    print("Global widget>input_text>_validate : ${widget.validator!(text)}");
     if (widget.validator != null) {
-      _errorText = widget.validator!(text);
-      setState(() {});
+      setState(() {
+        _errorText = widget.validator!(text);
+      });
     }
     if (widget.onChanged != null) {
       widget.onChanged!(text);
