@@ -41,8 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
     player.setReleaseMode(ReleaseMode.stop);
 
     // Listar productos de la BD
-    //products = DatabaseProvider.db.getProducts();
-    products = DatabaseProvider.db.getDataExample();
+    products = DatabaseProvider.db.getProducts();
+    // products = DatabaseProvider.db.getDataExample();
   }
 
   @override

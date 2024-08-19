@@ -1,6 +1,9 @@
 import 'dart:io';
 
 import 'package:bodega/models/product.dart';
+import 'package:bodega/screens/settings/settings_screen.dart';
+import 'package:bodega/widgets/dialogs.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -113,7 +116,7 @@ class DatabaseProvider {
     return {"dbpath": dbPath, "externalstoragepath": externalStoragePath};
   }
 
-  backupDB() async {
+  backupDB(BuildContext context) async {
     // var status = await Permission.manageExternalStorage.status;
     // if (!status.isGranted) {
     //   print("====status=========> $status");
@@ -134,7 +137,8 @@ class DatabaseProvider {
       await folderPathForDBFile.create();
       await ourDBFile.copy("/storage/emulated/0/StoreDatabase/store.db");
     } catch (e) {
-      print("====error=====> $e");
+      // ignore: use_build_context_synchronously
+      SnackBars.show(context, error: e.toString());
     }
   }
 
@@ -163,27 +167,30 @@ class DatabaseProvider {
       Product(
         id: 1,
         name: "GOMA EN POMO LAYCONSA ECOGREEN",
-        description: "descp",
+        description:
+            "La goma es una sustancia resinosa que se pega muy rápidamente, con un alto peso molecular; estructuralmente muy compleja, siempre con carácter ácido. Es sólida, aunque su consistencia varía según su procedencia y las condiciones a las que se somete, y tiene la peculiaridad de ser genuinamente elástica.",
         price: 2.8,
-        quantity: 2,
+        quantity: 99,
         barcode: "123",
         creationDate: DateTime.now(),
       ),
       Product(
         id: 2,
         name: "CREMA PONDS REHIDRATANTE NUEVA PRESENTACION 10G",
-        description: "descp2",
+        description:
+            "La crema S humectante y nutritiva Pond´s nutre y humecta la piel durante 48 horas de afuera hacia dentro, previniendo la resequedad de la piel, dejandola suave y tersa por fuera. Dermatológicamente probada.",
         price: 2.8,
-        quantity: 2,
+        quantity: 12,
         barcode: "1234",
         creationDate: DateTime.now(),
       ),
       Product(
         id: 3,
         name: "GASEOSA ORO 300ML",
-        description: "descp3",
+        description:
+            "La gaseosa, o bebida carbonatada, es una bebida saborizada, efervescente (carbonatada) y sin alcohol. Estas bebidas suelen consu- mirse frías, para ser más refrescantes y para evitar la pérdida de dióxido de carbono, que le otorga la efervescencia.",
         price: 2.8,
-        quantity: 2,
+        quantity: 31,
         barcode: "123333",
         creationDate: DateTime.now(),
       ),
@@ -192,7 +199,7 @@ class DatabaseProvider {
         name: "PAPEL HIGIENICO ROSITA 2 ROLLOS",
         description: "descRIPCION 4",
         price: 80.83,
-        quantity: 2,
+        quantity: 89,
         barcode: "12377733",
         creationDate: DateTime.now(),
       ),
@@ -210,7 +217,7 @@ class DatabaseProvider {
         name: "MERMELADA MANZANA",
         description: "descRIPCION 8",
         price: 22,
-        quantity: 2,
+        quantity: 17,
         barcode: "123330000233",
         creationDate: DateTime.now(),
       )

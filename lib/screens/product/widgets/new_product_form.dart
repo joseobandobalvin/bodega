@@ -27,32 +27,20 @@ class NewProductForm extends GetView<ProductController> {
   final _formKey = GlobalKey<FormState>();
 
   void _submit(BuildContext context) async {
-    print(_formKey.currentState!.validate());
     if (_formKey.currentState!.validate()) {
       ProgressDialog.show(context);
+
       final int submitOk = await controller.submit(controller.isNewProduct);
 
       // ignore: use_build_context_synchronously
       Navigator.pop(context);
       if (submitOk < 1) {
-        showDialog(
+        Dialogs.info(
           // ignore: use_build_context_synchronously
-          context: context,
-          builder: (_) => AlertDialog(
-            title: const Text("ERROR"),
-            content: const Text("No se pudo guardar el registro"),
-            actions: <Widget>[
-              TextButton(
-                style: TextButton.styleFrom(
-                  textStyle: Theme.of(context).textTheme.labelLarge,
-                ),
-                child: Text(S.current.txtOk),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          ),
+          context,
+          title: S.current.txError,
+          content: S.current.txErrorDescription,
+          btnText: S.current.txtOk,
         );
       } else {
         // go to home
@@ -92,33 +80,12 @@ class NewProductForm extends GetView<ProductController> {
                         ? barcodeNewController
                         : barcodeController, // <-- SEE HERE
                     decoration: const InputDecoration(
+                      isDense: true,
                       prefixIcon: Icon(Icons.qr_code_scanner),
                     ),
                     textInputAction: TextInputAction.next,
                     onChanged: controller.onBarcodeChanged,
                   ),
-                  // Obx(() => TextFormField(
-                  //       key: UniqueKey(),
-
-                  //       initialValue: controller.isNewProduct
-                  //           ? "${controller.ini}"
-                  //           : controller.barcode, // <-- SEE HERE
-                  //       decoration: const InputDecoration(
-                  //         prefixIcon: Icon(Icons.qr_code_scanner),
-                  //       ),
-                  //       textInputAction: TextInputAction.next,
-                  //       onChanged: controller.onBarcodeChanged,
-                  //     )),
-                  // child: InputText(
-                  //   prefixIcon: const Icon(Icons.production_quantity_limits),
-                  //   labelText: "Código de barras",
-                  //   textInputAction: TextInputAction.next,
-                  //   onChanged: controller.onBarcodeChanged,
-                  //   validator: (text) {
-                  //     if (text.isNotEmpty) return null;
-                  //     return "Codigo de barras invalido";
-                  //   },
-                  // ),
                 ),
                 Expanded(
                   flex: 1,
@@ -136,6 +103,7 @@ class NewProductForm extends GetView<ProductController> {
             //Obx(() => Text("${controller.ini}")),
 
             InputText(
+              isDense: true,
               prefixIcon: const Icon(Icons.production_quantity_limits),
               labelText: S.current.txName,
               textInputAction: TextInputAction.next,
@@ -149,6 +117,7 @@ class NewProductForm extends GetView<ProductController> {
               },
             ),
             InputText(
+              isDense: true,
               prefixIcon: const Icon(Icons.price_check),
               labelText: S.current.txPrice,
               textInputAction: TextInputAction.next,
@@ -163,6 +132,7 @@ class NewProductForm extends GetView<ProductController> {
               },
             ),
             InputText(
+              isDense: true,
               prefixIcon: const Icon(Icons.pin),
               labelText: S.current.txQuantity,
               textInputAction: TextInputAction.next,
@@ -177,8 +147,9 @@ class NewProductForm extends GetView<ProductController> {
               },
             ),
             InputText(
+              isDense: true,
               prefixIcon: const Icon(Icons.view_list),
-              labelText: S.current.txName,
+              labelText: S.current.txDescription,
               textInputAction: TextInputAction.next,
               controller: descriptionController,
               onChanged: controller.onDescriptionChanged,

@@ -14,10 +14,13 @@
     "txtDefaultDescription":"Descripcion por defecto",
     
     "txtCancel": "Cancelar",
+    "txClose": "Cerrar",
     "txtDelete": "Eliminar",
     "txtDelete2": "Borrar",
     "txtDetail": "Detalle",
     "txtEdit": "Editar",
+    "txError": "Error",
+    "txErrorDescription":"No se pudo guardar el registro",
     "txtNew": "Nuevo",
     "txtOk" : "OK",
     "txtSave": "Guardar",

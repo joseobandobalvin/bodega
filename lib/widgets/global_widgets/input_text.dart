@@ -8,6 +8,7 @@ class InputText extends StatefulWidget {
   final String? Function(String?)? validator;
   final bool obscureText;
   final bool autofocus;
+  final bool? isDense;
   final void Function(String)? onChanged;
   final void Function(String)? onSubmitted;
   final TextInputAction? textInputAction;
@@ -21,6 +22,7 @@ class InputText extends StatefulWidget {
     this.validator,
     this.obscureText = false,
     this.autofocus = false,
+    this.isDense = false,
     this.onChanged,
     this.onSubmitted,
     this.textInputAction,
@@ -90,6 +92,7 @@ class InputTextState extends State<InputText> {
         contentPadding: const EdgeInsets.symmetric(vertical: 5),
         prefixIcon: widget.prefixIcon,
         labelText: widget.labelText,
+        isDense: widget.isDense,
         suffixIcon: widget.obscureText
             ? CupertinoButton(
                 minSize: 25,

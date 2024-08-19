@@ -42,7 +42,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "pageHomeWelcomeGender": m1,
         "pageHomeWelcomeRole": m2,
         "pageNotificationsCount": m3,
+        "txClose": MessageLookupByLibrary.simpleMessage("Cerrar"),
         "txDescription": MessageLookupByLibrary.simpleMessage("Descripción"),
+        "txError": MessageLookupByLibrary.simpleMessage("Error"),
+        "txErrorDescription": MessageLookupByLibrary.simpleMessage(
+            "No se pudo guardar el registro"),
         "txName": MessageLookupByLibrary.simpleMessage("Nombre"),
         "txPrice": MessageLookupByLibrary.simpleMessage("Precio"),
         "txQuantity": MessageLookupByLibrary.simpleMessage("Cantidad"),

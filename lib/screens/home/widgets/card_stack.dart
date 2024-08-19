@@ -122,13 +122,13 @@ class CardStack extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: RichText(
-                  text: const TextSpan(
-                    text: "20",
-                    style: TextStyle(
+                  text: TextSpan(
+                    text: product.quantity.toString(),
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
-                    children: <TextSpan>[
+                    children: const <TextSpan>[
                       TextSpan(
                         text: ' und',
                         style: TextStyle(
@@ -166,7 +166,13 @@ class CardStack extends StatelessWidget {
           ),
         ),
         onTap: () {
-          // print(product.name);
+          print(product.name);
+        },
+        onLongPress: () {
+          Dialogs.infoProduct(
+            context,
+            product: product,
+          );
         },
       ),
     );

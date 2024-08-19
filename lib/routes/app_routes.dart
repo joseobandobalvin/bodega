@@ -4,7 +4,7 @@ import 'package:bodega/controllers/settings_controller.dart';
 import 'package:bodega/screens/detail/detail_product_screen.dart';
 import 'package:bodega/screens/home/home_screen.dart';
 import 'package:bodega/screens/product/edit_new_product_screen.dart';
-import 'package:bodega/screens/product/product_screen.dart';
+import 'package:bodega/screens/product/list_product_screen.dart';
 import 'package:bodega/screens/product/search_product_screen.dart';
 import 'package:bodega/screens/settings/settings_screen.dart';
 
@@ -52,7 +52,7 @@ class AppRoutes {
         // ),
         GetPage(
           name: product,
-          page: () => const ProductScreen(),
+          page: () => const ListProductScreen(),
           binding: BindingsBuilder(() {
             //Get.put(ProductController());
           }),

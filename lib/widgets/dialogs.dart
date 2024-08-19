@@ -1,30 +1,134 @@
+import 'package:bodega/configs/themes/app_colors.dart';
 import 'package:bodega/generated/l10n.dart';
+import 'package:bodega/models/product.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 abstract class Dialogs {
-  static Future<void> alert(BuildContext context,
+  static Future<void> info(BuildContext context,
       {String? title,
-      String? description,
-      String okText = "OK",
+      String? content,
+      String? btnText,
       bool dismissible = true}) {
-    return showCupertinoDialog(
+    return showDialog(
       context: context,
       barrierDismissible: dismissible,
-      builder: (_) => PopScope(
-        //onWillPop: () async => dismissible,
+      builder: (_) => AlertDialog(
+        title: title != null
+            ? Text(
+                title,
+                textAlign: TextAlign.justify,
+              )
+            : null,
+        content: content != null
+            ? Text(
+                content,
+                textAlign: TextAlign.justify,
+              )
+            : null,
+        actions: [
+          TextButton(
+            child: btnText != null ? Text(btnText) : Text(S.current.txClose),
+            onPressed: () => Navigator.pop(context),
+          )
+        ],
+      ),
+    );
+  }
 
-        child: CupertinoAlertDialog(
-          title: title != null ? Text(title) : null,
-          content: description != null ? Text(description) : null,
-          actions: [
-            CupertinoDialogAction(
-              child: Text(okText),
-              onPressed: () => Navigator.pop(context),
-            )
-          ],
-        ),
+  static Future<void> infoProduct(BuildContext context,
+      {String? title,
+      Product? product,
+      String? btnText,
+      bool dismissible = true}) {
+    return showDialog(
+      context: context,
+      barrierDismissible: dismissible,
+      builder: (_) => AlertDialog(
+        scrollable: true,
+        title: title != null
+            ? Text(
+                title,
+                textAlign: TextAlign.justify,
+              )
+            : null,
+        content: product != null
+            ? Column(
+                children: [
+                  Text(
+                    product.name,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: kDarkBlue,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14.0,
+                    ),
+                  ),
+                  Container(height: 8.0),
+                  const Divider(height: 1.0),
+                  Container(height: 8.0),
+                  Row(
+                    children: [
+                      const Text(
+                        "Cantidad : ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(product.quantity.toString()),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text(
+                        "Precio de venta : ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text("S/ ${product.price}"),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text(
+                        "QR : ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(product.barcode),
+                    ],
+                  ),
+                  RichText(
+                    textAlign: TextAlign.justify,
+                    text: TextSpan(
+                      text: "Observación : ",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: product.description,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black54,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              )
+            : null,
+        actions: [
+          TextButton(
+            child: btnText != null ? Text(btnText) : Text(S.current.txClose),
+            onPressed: () => Navigator.pop(context),
+          )
+        ],
       ),
     );
   }
@@ -83,8 +187,8 @@ abstract class Dialogs {
               ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context, false),
             child: Text(S.current.txtCancel),
+            onPressed: () => Navigator.pop(context, false),
           ),
           TextButton(
             style: TextButton.styleFrom(
@@ -178,11 +282,6 @@ abstract class ProgressDialog {
     return showCupertinoModalPopup(
       context: context,
       builder: (_) => PopScope(
-        onPopInvoked: (bool didPop) {
-          if (kDebugMode) {
-            print("$didPop");
-          }
-        },
         child: Container(
           width: double.infinity,
           height: double.infinity,
@@ -198,14 +297,32 @@ abstract class ProgressDialog {
 }
 
 class SnackBars {
-  static void show(BuildContext context, {required Object error}) {
+  static void show(
+    BuildContext context, {
+    required Object error,
+    bool? hasAction = false,
+  }) {
     final snackBar = SnackBar(
-      content: Text(error.toString()),
-      action: SnackBarAction(
-        label: 'Deshacer',
-        onPressed: () {
-          // Some code to undo the change.
-        },
+      action: hasAction == true
+          ? SnackBarAction(
+              label: 'Deshacer',
+              onPressed: () {
+                // Some code to undo the change.
+              },
+            )
+          : null,
+      behavior: SnackBarBehavior.floating,
+      content: Text(
+        error.toString(),
+        textAlign: TextAlign.justify,
+      ),
+      dismissDirection: DismissDirection.horizontal,
+      duration: const Duration(
+        seconds: 4,
+      ),
+      margin: const EdgeInsets.symmetric(
+        vertical: 10.0,
+        horizontal: 10.0,
       ),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bodega/generated/l10n.dart';
 import 'package:bodega/providers/database_provider.dart';
 import 'package:get/get.dart';
@@ -83,12 +85,19 @@ class ProductController extends GetxController {
     );
 
     if (isNew && barcode.isNotEmpty && price > 0) {
-      var result = await DatabaseProvider.db.addNewProduct(p);
-      return result;
+      try {
+        var result = await DatabaseProvider.db.addNewProduct(p);
+        return result;
+      } catch (e) {
+        print(e);
+      }
     } else if (isNew == false && barcode.isNotEmpty && price > 0) {
-      var result = await DatabaseProvider.db.update(id, p);
-
-      return result;
+      try {
+        var result = await DatabaseProvider.db.update(id, p);
+        return result;
+      } catch (e) {
+        print(e);
+      }
     }
 
     // if (barcode.isNotEmpty && price > 0) {

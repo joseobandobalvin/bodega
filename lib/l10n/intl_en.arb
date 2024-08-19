@@ -14,10 +14,13 @@
     "txtDefaultDescription":"Default Description",
     
     "txtCancel": "Cancel",
+    "txClose": "Close",
     "txtDelete": "Delete",
     "txtDelete2": "Delete",
     "txtDetail": "Detail",
     "txtEdit": "Edit",
+    "txError": "Error",
+    "txErrorDescription":"The record could not be saved.",
     "txtNew": "New",
     "txtOk" : "OK",
     "txtSave": "Save",

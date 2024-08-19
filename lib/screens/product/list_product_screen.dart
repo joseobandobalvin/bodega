@@ -12,14 +12,14 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 
-class ProductScreen extends StatefulWidget {
-  const ProductScreen({super.key});
+class ListProductScreen extends StatefulWidget {
+  const ListProductScreen({super.key});
 
   @override
-  State<ProductScreen> createState() => _ProductScreenState();
+  State<ListProductScreen> createState() => _ListProductScreenState();
 }
 
-class _ProductScreenState extends State<ProductScreen> {
+class _ListProductScreenState extends State<ListProductScreen> {
   Future<List<Product>>? products;
 
   late AudioPlayer player = AudioPlayer();
@@ -34,8 +34,8 @@ class _ProductScreenState extends State<ProductScreen> {
     // Set the release mode to keep the source after playback has completed.
     player.setReleaseMode(ReleaseMode.stop);
     // Listar productos de la BD
-    //products = DatabaseProvider.db.getProducts();
-    products = DatabaseProvider.db.getDataExample();
+    products = DatabaseProvider.db.getProducts();
+    // products = DatabaseProvider.db.getDataExample();
   }
 
   @override

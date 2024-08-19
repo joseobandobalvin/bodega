@@ -190,6 +190,16 @@ class S {
     );
   }
 
+  /// `Close`
+  String get txClose {
+    return Intl.message(
+      'Close',
+      name: 'txClose',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Delete`
   String get txtDelete {
     return Intl.message(
@@ -225,6 +235,26 @@ class S {
     return Intl.message(
       'Edit',
       name: 'txtEdit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error`
+  String get txError {
+    return Intl.message(
+      'Error',
+      name: 'txError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The record could not be saved.`
+  String get txErrorDescription {
+    return Intl.message(
+      'The record could not be saved.',
+      name: 'txErrorDescription',
       desc: '',
       args: [],
     );

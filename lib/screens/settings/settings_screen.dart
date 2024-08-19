@@ -65,7 +65,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     trailing: const Icon(Icons.settings),
                     title: Text(S.current.txtDatabaseBackUp),
                     onTap: () async {
-                      await DatabaseProvider.db.backupDB();
+                      await DatabaseProvider.db.backupDB(context);
                     },
                   ),
                   ListTile(

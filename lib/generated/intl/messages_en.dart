@@ -42,7 +42,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "pageHomeWelcomeGender": m1,
         "pageHomeWelcomeRole": m2,
         "pageNotificationsCount": m3,
+        "txClose": MessageLookupByLibrary.simpleMessage("Close"),
         "txDescription": MessageLookupByLibrary.simpleMessage("Description"),
+        "txError": MessageLookupByLibrary.simpleMessage("Error"),
+        "txErrorDescription": MessageLookupByLibrary.simpleMessage(
+            "The record could not be saved."),
         "txName": MessageLookupByLibrary.simpleMessage("Name"),
         "txPrice": MessageLookupByLibrary.simpleMessage("Price"),
         "txQuantity": MessageLookupByLibrary.simpleMessage("Quantity"),
